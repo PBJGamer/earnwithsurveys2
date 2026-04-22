@@ -13,7 +13,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #0f2a44, #081a2f); /* BLUE THEME */
+  background: linear-gradient(180deg, #0f2a44, #081a2f);
   color: white;
 }
 
@@ -50,7 +50,7 @@ h1 {
   max-width: 520px;
 }
 
-/* CTA (ORANGE LIKE BANNER) */
+/* CTA */
 .cta-button {
   display: inline-block;
   background: linear-gradient(135deg, #f97316, #facc15);
@@ -120,13 +120,13 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* MOCKUP (slightly lighter for contrast) */
+/* MOCKUP (MATCHED TO OTHER SITES) */
 .mockup {
   width: 100%;
   max-width: 420px;
   background: #0c1f35;
   border-radius: 18px;
-  padding: 20px;
+  padding: 18px;
 }
 
 .mock-top {
@@ -140,7 +140,16 @@ h1 {
   background: #061423;
   padding: 10px;
   border-radius: 8px;
-  text-align: center;
+}
+
+.stat-title {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .survey {
@@ -172,6 +181,48 @@ h1 {
   color: black;
 }
 
+/* 🔥 ADVANCED CONVERSION SECTION */
+.boost {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.boost-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 14px;
+}
+
+.boost-text {
+  font-size: 15px;
+  color: #cbd5f5;
+  margin-bottom: 15px;
+}
+
+.boost-highlight {
+  color: #facc15;
+  font-weight: 600;
+}
+
+.boost-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  color: black;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.25s;
+}
+
+.boost-button:hover {
+  transform: translateY(-2px);
+}
+
 /* FOOTER */
 .trust-footer {
   text-align: center;
@@ -192,7 +243,8 @@ h1 {
   }
 
   .cta-button,
-  .cta-secondary {
+  .cta-secondary,
+  .boost-button {
     width: 100%;
     text-align: center;
   }
@@ -253,16 +305,40 @@ h1 {
   <div class="mockup">
 
     <div class="mock-top">
-      <div class="stat">12 Surveys</div>
-      <div class="stat">$4.80 Today</div>
+      <div class="stat">
+        <div class="stat-title">Available</div>
+        <div class="stat-value">12 Surveys</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Today</div>
+        <div class="stat-value">$4.80</div>
+      </div>
     </div>
 
     <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
     <div class="survey"><span>App feedback</span><span>3 min</span></div>
     <div class="survey"><span>Daily routine</span><span>4 min</span></div>
+    <div class="survey"><span>Entertainment</span><span>6 min</span></div>
 
   </div>
 
+</div>
+
+<!-- 🔥 FINAL PUSH -->
+<div class="boost">
+  <div class="boost-box">
+
+    <div class="boost-text">
+      People are already earning small amounts daily.<br>
+      <span class="boost-highlight">It’s free to try — no risk.</span>
+    </div>
+
+    <a class="boost-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
+      Start Now →
+    </a>
+
+  </div>
 </div>
 
 <div class="trust-footer">
