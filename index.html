@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top Rated Survey Site</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; }
@@ -13,49 +13,65 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0f2a44; /* simplified = safer */
+  background: linear-gradient(180deg, #0f2a44, #081a2f); /* BLUE THEME */
   color: white;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 70px 20px 50px;
+  padding: 80px 20px 60px;
 }
 
 .badge {
-  background: rgba(250,204,21,0.2);
+  display: inline-block;
+  background: rgba(250,204,21,0.15);
   color: #facc15;
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 13px;
-  display: inline-block;
   margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 44px;
+  font-size: 52px;
   margin: 0;
+  line-height: 1.1;
 }
 
-.highlight { color: #facc15; }
+.highlight {
+  color: #facc15;
+}
 
 .subtext {
   color: #cbd5f5;
-  font-size: 16px;
-  margin: 15px auto 25px;
-  max-width: 500px;
+  font-size: 18px;
+  margin: 15px auto 30px;
+  max-width: 520px;
 }
 
-/* CTA (no animation = no crash risk) */
+/* CTA (ORANGE LIKE BANNER) */
 .cta-button {
   display: inline-block;
-  background: #f97316;
+  background: linear-gradient(135deg, #f97316, #facc15);
   color: black;
-  padding: 14px 28px;
-  border-radius: 10px;
+  padding: 16px 34px;
+  border-radius: 12px;
   font-weight: 700;
   text-decoration: none;
+  font-size: 18px;
+  box-shadow: 0 10px 30px rgba(249,115,22,0.4);
+  animation: pulse 2.5s infinite;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(249,115,22,0); }
+  100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
 }
 
 .cta-note {
@@ -64,47 +80,53 @@ h1 {
   margin-top: 10px;
 }
 
-/* TRUST ROW */
+/* TRUST STRIP */
 .trust-row {
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .trust-item {
-  background: rgba(255,255,255,0.1);
-  padding: 8px 12px;
+  background: rgba(255,255,255,0.08);
+  padding: 8px 14px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 13px;
+  color: #e2e8f0;
 }
 
 /* MAIN */
 .main {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 40px 20px 60px;
+  gap: 60px;
+  padding: 40px 20px 100px;
   flex-wrap: wrap;
 }
 
+/* INFO */
 .info {
   max-width: 420px;
 }
 
-.info p {
-  color: #cbd5f5;
-  margin-bottom: 18px;
+.info h2 {
+  margin-bottom: 8px;
 }
 
-/* MOCKUP */
+.info p {
+  color: #cbd5f5;
+  margin-bottom: 20px;
+}
+
+/* MOCKUP (slightly lighter for contrast) */
 .mockup {
   width: 100%;
-  max-width: 400px;
-  background: #081a2f;
-  border-radius: 14px;
-  padding: 16px;
+  max-width: 420px;
+  background: #0c1f35;
+  border-radius: 18px;
+  padding: 20px;
 }
 
 .mock-top {
@@ -117,8 +139,8 @@ h1 {
   flex: 1;
   background: #061423;
   padding: 10px;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .survey {
@@ -128,77 +150,53 @@ h1 {
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
 }
 
 /* SECOND CTA */
 .final-cta {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .cta-secondary {
   display: inline-block;
   border: 2px solid #facc15;
   color: #facc15;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 14px 28px;
+  border-radius: 10px;
   text-decoration: none;
+  font-weight: 600;
 }
 
-/* 🔥 ADVANCED SECTION (SAFE VERSION) */
-.boost {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.boost-box {
-  max-width: 450px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.08);
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.boost-text {
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #e2e8f0;
-}
-
-.boost-button {
-  display: inline-block;
-  background: #f97316;
+.cta-secondary:hover {
+  background: #facc15;
   color: black;
-  padding: 12px 22px;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 /* FOOTER */
 .trust-footer {
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #94a3b8;
-  padding: 30px 20px 50px;
+  padding: 50px 20px 70px;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
 
-  h1 { font-size: 30px; }
+  h1 { font-size: 34px; }
 
   .main {
     flex-direction: column;
-    padding: 30px 16px;
+    gap: 30px;
+    padding: 30px 16px 80px;
   }
 
   .cta-button,
-  .cta-secondary,
-  .boost-button {
+  .cta-secondary {
     width: 100%;
     text-align: center;
   }
+
 }
 </style>
 </head>
@@ -206,6 +204,7 @@ h1 {
 <body>
 
 <div class="hero">
+
   <div class="badge">⭐ Trusted by thousands</div>
 
   <h1>
@@ -217,7 +216,7 @@ h1 {
   </div>
 
   <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
-    Join Free
+    👉 Join Free
   </a>
 
   <div class="cta-note">Takes less than 1 minute to get started</div>
@@ -227,51 +226,70 @@ h1 {
     <div class="trust-item">💳 100+ Cashouts</div>
     <div class="trust-item">🌍 Worldwide</div>
   </div>
+
 </div>
 
 <div class="main">
 
   <div class="info">
-    <p>Reliable surveys, consistent payouts, and thousands of users.</p>
-    <p>Earn cash, gift cards, and rewards for sharing your opinion.</p>
-    <p>Simple, legit, and used worldwide.</p>
+
+    <h2>Why people trust it</h2>
+    <p>Reliable surveys, consistent payouts, and thousands of active users.</p>
+
+    <h2>What you earn</h2>
+    <p>Cash, gift cards, and rewards for sharing your opinion.</p>
+
+    <h2>Is it legit?</h2>
+    <p>Yes — used daily by people worldwide looking to earn extra money.</p>
 
     <div class="final-cta">
-      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d">
+      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
         Get Started Free
       </a>
     </div>
+
   </div>
 
   <div class="mockup">
+
     <div class="mock-top">
       <div class="stat">12 Surveys</div>
       <div class="stat">$4.80 Today</div>
     </div>
 
-    <div class="survey"><span>Shopping</span><span>5 min</span></div>
-    <div class="survey"><span>Apps</span><span>3 min</span></div>
-    <div class="survey"><span>Daily</span><span>4 min</span></div>
+    <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
+    <div class="survey"><span>App feedback</span><span>3 min</span></div>
+    <div class="survey"><span>Daily routine</span><span>4 min</span></div>
+
   </div>
 
-</div>
-
-<!-- THIS WILL NOW 100% SHOW -->
-<div class="boost">
-  <div class="boost-box">
-    <div class="boost-text">
-      Free to try. No risk. Start earning in minutes.
-    </div>
-
-    <a class="boost-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d">
-      Start Now →
-    </a>
-  </div>
 </div>
 
 <div class="trust-footer">
   Free signup • Works worldwide • No payment required
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const ctas = document.querySelectorAll("a[href*='primeopinion']");
+
+  ctas.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      // Open your referral link in a new tab
+      window.open(this.href, "_blank");
+
+      // Redirect current page after short delay (boosts tracking)
+      setTimeout(() => {
+        window.location.href = this.href;
+      }, 1200);
+    });
+  });
+
+});
+</script>
+  
 </body>
 </html>
