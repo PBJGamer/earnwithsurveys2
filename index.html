@@ -13,7 +13,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #0f2a44, #081a2f); /* BLUE THEME */
+  background: linear-gradient(180deg, #0f2a44, #081a2f);
   color: white;
 }
 
@@ -50,7 +50,7 @@ h1 {
   max-width: 520px;
 }
 
-/* CTA (ORANGE LIKE BANNER) */
+/* CTA */
 .cta-button {
   display: inline-block;
   background: linear-gradient(135deg, #f97316, #facc15);
@@ -80,6 +80,15 @@ h1 {
   margin-top: 10px;
 }
 
+/* 🔥 FADING TEXT */
+.fade-text {
+  font-size: 13px;
+  color: #cbd5f5;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
 /* TRUST STRIP */
 .trust-row {
   display: flex;
@@ -106,7 +115,6 @@ h1 {
   flex-wrap: wrap;
 }
 
-/* INFO */
 .info {
   max-width: 420px;
 }
@@ -120,7 +128,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* MOCKUP (slightly lighter for contrast) */
+/* MOCKUP */
 .mockup {
   width: 100%;
   max-width: 420px;
@@ -221,6 +229,9 @@ h1 {
 
   <div class="cta-note">Takes less than 1 minute to get started</div>
 
+  <!-- 🔥 FADING TEXT -->
+  <div class="fade-text" id="fadeText"></div>
+
   <div class="trust-row">
     <div class="trust-item">⭐ 4.5+ Rating</div>
     <div class="trust-item">💳 100+ Cashouts</div>
@@ -269,27 +280,31 @@ h1 {
   Free signup • Works worldwide • No payment required
 </div>
 
+<!-- 🔥 SCRIPT -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+const messages = [
+  "💰 Users cash out daily",
+  "⚡ Surveys take just minutes",
+  "🌍 Available worldwide",
+  "🎁 100+ reward options"
+];
 
-  const ctas = document.querySelectorAll("a[href*='primeopinion']");
+let i = 0;
+const el = document.getElementById("fadeText");
 
-  ctas.forEach(btn => {
-    btn.addEventListener("click", function(e) {
-      e.preventDefault();
+function rotateText() {
+  el.style.opacity = 0;
 
-      // Open your referral link in a new tab
-      window.open(this.href, "_blank");
+  setTimeout(() => {
+    el.textContent = messages[i];
+    el.style.opacity = 1;
+    i = (i + 1) % messages.length;
+  }, 500);
+}
 
-      // Redirect current page after short delay (boosts tracking)
-      setTimeout(() => {
-        window.location.href = this.href;
-      }, 1200);
-    });
-  });
-
-});
+rotateText();
+setInterval(rotateText, 2500);
 </script>
-  
+
 </body>
 </html>
