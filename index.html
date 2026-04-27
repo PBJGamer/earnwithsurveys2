@@ -17,6 +17,18 @@ body {
   color: white;
 }
 
+/* FADE EFFECT */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* HERO */
 .hero {
   text-align: center;
@@ -39,9 +51,7 @@ h1 {
   line-height: 1.1;
 }
 
-.highlight {
-  color: #facc15;
-}
+.highlight { color: #facc15; }
 
 .subtext {
   color: #cbd5f5;
@@ -64,9 +74,7 @@ h1 {
   animation: pulse 2.5s infinite;
 }
 
-.cta-button:hover {
-  transform: translateY(-2px);
-}
+.cta-button:hover { transform: translateY(-2px); }
 
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
@@ -78,15 +86,6 @@ h1 {
   font-size: 13px;
   color: #94a3b8;
   margin-top: 10px;
-}
-
-/* 🔥 FADING TEXT */
-.fade-text {
-  font-size: 13px;
-  color: #cbd5f5;
-  margin-top: 8px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
 }
 
 /* TRUST STRIP */
@@ -115,13 +114,12 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* INFO */
 .info {
   max-width: 420px;
 }
 
-.info h2 {
-  margin-bottom: 8px;
-}
+.info h2 { margin-bottom: 8px; }
 
 .info p {
   color: #cbd5f5;
@@ -160,10 +158,8 @@ h1 {
   justify-content: space-between;
 }
 
-/* SECOND CTA */
-.final-cta {
-  margin-top: 30px;
-}
+/* CTA 2 */
+.final-cta { margin-top: 30px; }
 
 .cta-secondary {
   display: inline-block;
@@ -190,7 +186,6 @@ h1 {
 
 /* MOBILE */
 @media (max-width: 768px) {
-
   h1 { font-size: 34px; }
 
   .main {
@@ -204,15 +199,13 @@ h1 {
     width: 100%;
     text-align: center;
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-
+<div class="hero fade">
   <div class="badge">⭐ Trusted by thousands</div>
 
   <h1>
@@ -229,21 +222,16 @@ h1 {
 
   <div class="cta-note">Takes less than 1 minute to get started</div>
 
-  <!-- 🔥 FADING TEXT -->
-  <div class="fade-text" id="fadeText"></div>
-
   <div class="trust-row">
     <div class="trust-item">⭐ 4.5+ Rating</div>
     <div class="trust-item">💳 100+ Cashouts</div>
     <div class="trust-item">🌍 Worldwide</div>
   </div>
-
 </div>
 
-<div class="main">
+<div class="main fade">
 
   <div class="info">
-
     <h2>Why people trust it</h2>
     <p>Reliable surveys, consistent payouts, and thousands of active users.</p>
 
@@ -258,11 +246,9 @@ h1 {
         Get Started Free
       </a>
     </div>
-
   </div>
 
   <div class="mockup">
-
     <div class="mock-top">
       <div class="stat">12 Surveys</div>
       <div class="stat">$4.80 Today</div>
@@ -271,39 +257,32 @@ h1 {
     <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
     <div class="survey"><span>App feedback</span><span>3 min</span></div>
     <div class="survey"><span>Daily routine</span><span>4 min</span></div>
-
   </div>
 
 </div>
 
-<div class="trust-footer">
+<div class="trust-footer fade">
   Free signup • Works worldwide • No payment required
 </div>
 
-<!-- 🔥 SCRIPT -->
 <script>
-const messages = [
-  "💰 Users cash out daily",
-  "⚡ Surveys take just minutes",
-  "🌍 Available worldwide",
-  "🎁 100+ reward options"
-];
+const faders = document.querySelectorAll('.fade');
 
-let i = 0;
-const el = document.getElementById("fadeText");
+const appearOptions = {
+  threshold: 0.2
+};
 
-function rotateText() {
-  el.style.opacity = 0;
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('show');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
 
-  setTimeout(() => {
-    el.textContent = messages[i];
-    el.style.opacity = 1;
-    i = (i + 1) % messages.length;
-  }, 500);
-}
-
-rotateText();
-setInterval(rotateText, 2500);
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
 </script>
 
 </body>
