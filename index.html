@@ -3,25 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Top Rated Survey Site</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <style>
-* { box-sizing: border-box; }
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: linear-gradient(180deg, #0f2a44, #081a2f);
   color: white;
+  overflow-x: hidden;
 }
 
-/* FADE EFFECT */
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+/* =========================================================
+   FADE ANIMATION
+========================================================= */
+
 .fade {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .fade.show {
@@ -29,15 +58,53 @@ body {
   transform: translateY(0);
 }
 
-/* HERO */
+/* HERO STAGGER */
+
+.hero .fade-item {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFade 0.65s ease forwards;
+}
+
+.hero .delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero .delay-2 {
+  animation-delay: 0.35s;
+}
+
+.hero .delay-3 {
+  animation-delay: 0.55s;
+}
+
+.hero .delay-4 {
+  animation-delay: 0.75s;
+}
+
+.hero .delay-5 {
+  animation-delay: 0.95s;
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero {
   text-align: center;
-  padding: 80px 20px 60px;
+  padding: clamp(55px, 8vw, 90px) 0 clamp(45px, 6vw, 70px);
 }
 
 .badge {
   display: inline-block;
-  background: rgba(250,204,21,0.15);
+  background: rgba(250, 204, 21, 0.15);
   color: #facc15;
   padding: 6px 14px;
   border-radius: 999px;
@@ -46,23 +113,44 @@ body {
 }
 
 h1 {
-  font-size: 52px;
-  margin: 0;
-  line-height: 1.1;
+  font-size: clamp(36px, 5.5vw, 52px);
+  line-height: 1.08;
+  margin: 0 auto;
+  max-width: 850px;
+  letter-spacing: -1.3px;
 }
 
-.highlight { color: #facc15; }
+.highlight {
+  color: #facc15;
+}
 
 .subtext {
   color: #cbd5f5;
-  font-size: 18px;
-  margin: 15px auto 30px;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
+  margin: 18px auto 30px;
   max-width: 520px;
 }
 
-/* CTA */
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.cta-button,
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
 .cta-button {
-  display: inline-block;
   background: linear-gradient(135deg, #f97316, #facc15);
   color: black;
   padding: 16px 34px;
@@ -70,16 +158,16 @@ h1 {
   font-weight: 700;
   text-decoration: none;
   font-size: 18px;
-  box-shadow: 0 10px 30px rgba(249,115,22,0.4);
-  animation: pulse 2.5s infinite;
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
 }
 
-.cta-button:hover { transform: translateY(-2px); }
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(249, 115, 22, 0.5);
+}
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
-  70% { box-shadow: 0 0 0 12px rgba(249,115,22,0); }
-  100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+.cta-button:active {
+  transform: translateY(0);
 }
 
 .cta-note {
@@ -88,84 +176,113 @@ h1 {
   margin-top: 10px;
 }
 
-/* TRUST STRIP */
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
 .trust-row {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 25px;
 }
 
 .trust-item {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 13px;
   color: #e2e8f0;
 }
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
+
 .main {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  padding: 40px 20px 100px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  align-items: start;
+  gap: clamp(35px, 7vw, 70px);
+  padding: 30px 0 100px;
 }
 
-/* INFO */
 .info {
-  max-width: 420px;
+  min-width: 0;
 }
 
-.info h2 { margin-bottom: 8px; }
+.info h2 {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 2.5vw, 24px);
+}
 
 .info p {
   color: #cbd5f5;
-  margin-bottom: 20px;
+  line-height: 1.65;
+  margin: 0 0 24px;
+  font-size: 15px;
 }
 
-/* MOCKUP */
+/* =========================================================
+   MOCKUP
+========================================================= */
+
 .mockup {
   width: 100%;
-  max-width: 420px;
   background: #0c1f35;
   border-radius: 18px;
-  padding: 20px;
+  padding: clamp(15px, 3vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .mock-top {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 10px;
 }
 
 .stat {
-  flex: 1;
+  min-width: 0;
   background: #061423;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   text-align: center;
+  font-size: 14px;
 }
 
 .survey {
   background: #061423;
-  padding: 10px;
+  padding: 11px 12px;
   border-radius: 6px;
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
 }
 
-/* CTA 2 */
-.final-cta { margin-top: 30px; }
+.survey span:last-child {
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SECOND CTA
+========================================================= */
+
+.final-cta {
+  margin-top: 30px;
+}
 
 .cta-secondary {
-  display: inline-block;
   border: 2px solid #facc15;
   color: #facc15;
-  padding: 14px 28px;
+  background: transparent;
+  padding: 13px 28px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
@@ -174,30 +291,121 @@ h1 {
 .cta-secondary:hover {
   background: #facc15;
   color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.18);
 }
 
-/* FOOTER */
+.cta-secondary:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .trust-footer {
   text-align: center;
   font-size: 13px;
   color: #94a3b8;
-  padding: 50px 20px 70px;
+  padding: 45px 20px 70px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  h1 { font-size: 34px; }
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
 
   .main {
-    flex-direction: column;
-    gap: 30px;
-    padding: 30px 16px 80px;
+    grid-template-columns: 1fr;
+    max-width: 650px;
+    margin-inline: auto;
+  }
+
+  .mockup {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: min(100% - 28px, 1100px);
+  }
+
+  .hero {
+    padding-top: 50px;
+  }
+
+  h1 {
+    letter-spacing: -0.8px;
   }
 
   .cta-button,
   .cta-secondary {
     width: 100%;
+  }
+
+  .main {
+    padding-bottom: 70px;
+  }
+
+  .mock-top {
+    grid-template-columns: 1fr;
+  }
+
+  .survey {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .trust-item {
+    width: 100%;
     text-align: center;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .fade,
+  .hero .fade-item {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>
@@ -205,80 +413,171 @@ h1 {
 
 <body>
 
-<div class="hero fade">
-  <div class="badge">⭐ Trusted by thousands</div>
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-  <h1>
-    Top Rated <span class="highlight">Survey Site</span>
-  </h1>
+<section class="hero">
+  <div class="container">
 
-  <div class="subtext">
-    Get paid for your opinion with one of the most trusted survey platforms online.
+    <div class="badge fade-item delay-1">
+      ⭐ Trusted by thousands
+    </div>
+
+    <h1>
+      <span class="fade-item delay-2">
+        Top Rated
+      </span>
+      <span class="fade-item delay-3 highlight">
+        Survey Site
+      </span>
+    </h1>
+
+    <div class="subtext fade-item delay-4">
+      Get paid for your opinion with one of the most trusted survey
+      platforms online.
+    </div>
+
+    <a
+      class="cta-button fade-item delay-5"
+      href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      👉 Join Free
+    </a>
+
+    <div class="cta-note fade-item delay-5">
+      Takes less than 1 minute to get started
+    </div>
+
+    <div class="trust-row fade-item delay-5">
+
+      <div class="trust-item">
+        ⭐ 4.5+ Rating
+      </div>
+
+      <div class="trust-item">
+        💳 100+ Cashouts
+      </div>
+
+      <div class="trust-item">
+        🌍 Worldwide
+      </div>
+
+    </div>
+
   </div>
+</section>
 
-  <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
-    👉 Join Free
-  </a>
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
-  <div class="cta-note">Takes less than 1 minute to get started</div>
-
-  <div class="trust-row">
-    <div class="trust-item">⭐ 4.5+ Rating</div>
-    <div class="trust-item">💳 100+ Cashouts</div>
-    <div class="trust-item">🌍 Worldwide</div>
-  </div>
-</div>
-
-<div class="main fade">
+<main class="main container fade">
 
   <div class="info">
+
     <h2>Why people trust it</h2>
-    <p>Reliable surveys, consistent payouts, and thousands of active users.</p>
+    <p>
+      Reliable surveys, consistent payouts, and thousands of active users.
+    </p>
 
     <h2>What you earn</h2>
-    <p>Cash, gift cards, and rewards for sharing your opinion.</p>
+    <p>
+      Cash, gift cards, and rewards for sharing your opinion.
+    </p>
 
     <h2>Is it legit?</h2>
-    <p>Yes — used daily by people worldwide looking to earn extra money.</p>
+    <p>
+      Yes — used daily by people worldwide looking to earn extra money.
+    </p>
 
     <div class="final-cta">
-      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
+
+      <a
+        class="cta-secondary"
+        href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Get Started Free
       </a>
+
     </div>
+
   </div>
 
   <div class="mockup">
+
     <div class="mock-top">
-      <div class="stat">12 Surveys</div>
-      <div class="stat">$4.80 Today</div>
+
+      <div class="stat">
+        12 Surveys
+      </div>
+
+      <div class="stat">
+        $4.80 Today
+      </div>
+
     </div>
 
-    <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
-    <div class="survey"><span>App feedback</span><span>3 min</span></div>
-    <div class="survey"><span>Daily routine</span><span>4 min</span></div>
+    <div class="survey">
+      <span>Shopping habits</span>
+      <span>5 min</span>
+    </div>
+
+    <div class="survey">
+      <span>App feedback</span>
+      <span>3 min</span>
+    </div>
+
+    <div class="survey">
+      <span>Daily routine</span>
+      <span>4 min</span>
+    </div>
+
   </div>
 
-</div>
+</main>
 
-<div class="trust-footer fade">
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="trust-footer fade">
   Free signup • Works worldwide • No payment required
-</div>
+</footer>
 
 <script>
+/* =========================================================
+   SCROLL FADE SYSTEM
+========================================================= */
+
 const faders = document.querySelectorAll('.fade');
 
 const appearOptions = {
-  threshold: 0.2
+  threshold: 0.15,
+  rootMargin: "0px 0px -40px 0px"
 };
 
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('show');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
+const appearOnScroll = new IntersectionObserver(
+  function(entries, observer) {
+
+    entries.forEach(entry => {
+
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+
+    });
+
+  },
+  appearOptions
+);
 
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
