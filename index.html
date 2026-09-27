@@ -28,7 +28,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #020617;
+  background: linear-gradient(180deg, #0f2a44, #081a2f);
   color: white;
   overflow-x: hidden;
 }
@@ -44,15 +44,15 @@ a {
 
 
 /* =========================================================
-   SCROLL FADE
+   FADE ANIMATION
 ========================================================= */
 
 .fade {
   opacity: 0;
   transform: translateY(20px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .fade.show {
@@ -62,13 +62,13 @@ a {
 
 
 /* =========================================================
-   HERO ANIMATION
+   HERO STAGGER
 ========================================================= */
 
 .hero .fade-item {
   opacity: 0;
   transform: translateY(12px);
-  animation: heroFade 0.6s ease forwards;
+  animation: heroFade 0.65s ease forwards;
 }
 
 .hero .delay-1 {
@@ -76,11 +76,11 @@ a {
 }
 
 .hero .delay-2 {
-  animation-delay: 0.3s;
+  animation-delay: 0.35s;
 }
 
 .hero .delay-3 {
-  animation-delay: 0.5s;
+  animation-delay: 0.55s;
 }
 
 .hero .delay-4 {
@@ -88,15 +88,10 @@ a {
 }
 
 .hero .delay-5 {
-  animation-delay: 1s;
+  animation-delay: 0.95s;
 }
 
 @keyframes heroFade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -109,40 +104,35 @@ a {
 ========================================================= */
 
 .hero {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
   text-align: center;
-
   padding:
-    clamp(55px, 8vw, 85px)
-    clamp(16px, 4vw, 30px)
-    clamp(45px, 6vw, 65px);
+    clamp(55px, 8vw, 90px)
+    0
+    clamp(45px, 6vw, 70px);
 }
 
 .badge {
   display: inline-block;
 
-  background: rgba(250, 204, 21, 0.1);
+  background: rgba(250, 204, 21, 0.15);
   color: #facc15;
 
-  padding: 7px 15px;
+  padding: 6px 14px;
   border-radius: 999px;
 
-  font-size: clamp(12px, 1.5vw, 13px);
-
+  font-size: 13px;
   margin-bottom: 20px;
 }
 
 h1 {
-  font-size: clamp(36px, 5.2vw, 56px);
+  font-size: clamp(36px, 5.5vw, 52px);
   line-height: 1.08;
 
   margin: 0 auto;
 
   max-width: 850px;
 
-  letter-spacing: -1.5px;
+  letter-spacing: -1.3px;
 }
 
 .highlight {
@@ -156,26 +146,38 @@ h1 {
 
   line-height: 1.6;
 
-  margin: 20px auto 30px;
+  margin: 18px auto 30px;
 
-  max-width: 570px;
+  max-width: 520px;
 }
 
 
 /* =========================================================
-   PRIMARY CTA
+   BUTTONS
 ========================================================= */
 
+.cta-button,
+.cta-secondary {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
 .cta-button {
-  display: inline-block;
+  background:
+    linear-gradient(135deg, #f97316, #facc15);
 
-  background: linear-gradient(
-    135deg,
-    #f97316,
-    #facc15
-  );
-
-  color: #020617;
+  color: black;
 
   padding: 16px 34px;
 
@@ -188,198 +190,139 @@ h1 {
   font-size: 18px;
 
   box-shadow:
-    0 10px 30px rgba(249,115,22,0.35);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-
-  opacity: 0;
+    0 10px 30px rgba(249, 115, 22, 0.4);
 
   animation:
-    heroFade 0.6s ease forwards,
-    pulse 2.5s 1.6s infinite;
-
-  animation-delay: 1s, 1.6s;
+    pulse 2.5s infinite;
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
   box-shadow:
-    0 14px 35px rgba(249,115,22,0.45);
+    0 14px 35px rgba(249, 115, 22, 0.5);
 }
 
 .cta-button:active {
   transform: translateY(0);
 }
 
+
+/* =========================================================
+   CTA PULSE
+========================================================= */
+
 @keyframes pulse {
 
   0% {
     box-shadow:
-      0 0 0 0 rgba(249,115,22,0.35);
+      0 0 0 0 rgba(249, 115, 22, 0.35);
   }
 
   70% {
     box-shadow:
-      0 0 0 12px rgba(249,115,22,0);
+      0 0 0 12px rgba(249, 115, 22, 0);
   }
 
   100% {
     box-shadow:
-      0 0 0 0 rgba(249,115,22,0);
+      0 0 0 0 rgba(249, 115, 22, 0);
   }
 
 }
 
 
-/* =========================================================
-   CTA NOTE
-========================================================= */
-
 .cta-note {
   font-size: 13px;
 
-  color: #64748b;
+  color: #94a3b8;
 
-  margin-top: 11px;
-
-  opacity: 0;
-
-  animation:
-    heroFade 0.6s ease forwards;
-
-  animation-delay: 1.2s;
+  margin-top: 10px;
 }
 
 
 /* =========================================================
-   REWARD OPTIONS
+   TRUST STRIP
 ========================================================= */
 
-.reward-options {
+.trust-row {
 
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   gap: 10px;
 
   flex-wrap: wrap;
 
-  margin-top: 22px;
-
-  opacity: 0;
-
-  animation:
-    heroFade 0.6s ease forwards;
-
-  animation-delay: 1.4s;
+  margin-top: 25px;
 }
 
-.reward-item {
+.trust-item {
 
   background:
-    rgba(255,255,255,0.045);
+    rgba(255, 255, 255, 0.08);
 
   border:
-    1px solid rgba(255,255,255,0.07);
+    1px solid rgba(255, 255, 255, 0.06);
 
-  color: #cbd5f5;
-
-  padding: 8px 13px;
+  padding: 8px 14px;
 
   border-radius: 999px;
 
-  font-size: 12px;
+  font-size: 13px;
 
-  white-space: nowrap;
+  color: #e2e8f0;
 }
 
 
 /* =========================================================
-   STORY
-========================================================= */
-
-.story {
-
-  width: calc(100% - 32px);
-
-  max-width: 650px;
-
-  margin: 5px auto 55px;
-
-  text-align: center;
-
-  color: #cbd5f5;
-
-  line-height: 1.7;
-
-  font-size: clamp(15px, 1.8vw, 16px);
-}
-
-
-/* =========================================================
-   MAIN CONTENT
+   MAIN
 ========================================================= */
 
 .main {
 
-  width: 100%;
+  display: grid;
 
-  max-width: 1050px;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 420px);
 
-  margin: 0 auto;
+  align-items: start;
 
-  display: flex;
-
-  justify-content: center;
-
-  align-items: flex-start;
-
-  gap: clamp(35px, 6vw, 70px);
+  gap:
+    clamp(35px, 7vw, 70px);
 
   padding:
-    20px
-    clamp(16px, 4vw, 30px)
-    90px;
+    30px
+    0
+    100px;
 }
 
-
-/* =========================================================
-   INFO COLUMN
-========================================================= */
-
 .info {
-
-  width: 100%;
-
-  max-width: 450px;
+  min-width: 0;
 }
 
 .info h2 {
 
-  font-size:
-    clamp(21px, 2.5vw, 24px);
-
   margin:
-    0 0 9px;
+    0 0 8px;
+
+  font-size:
+    clamp(20px, 2.5vw, 24px);
 }
 
 .info p {
 
-  color: #94a3b8;
-
-  font-size:
-    clamp(15px, 1.8vw, 16px);
+  color: #cbd5f5;
 
   line-height: 1.65;
 
   margin:
-    0 0 25px;
+    0 0 24px;
+
+  font-size: 15px;
 }
 
 
@@ -390,7 +333,8 @@ h1 {
 .steps {
 
   margin:
-    30px 0 30px;
+    30px 0
+    30px;
 }
 
 .steps-title {
@@ -399,7 +343,7 @@ h1 {
 
   margin-bottom: 18px;
 
-  color: #f8fafc;
+  color: #ffffff;
 
   font-weight: 600;
 }
@@ -408,11 +352,16 @@ h1 {
 
   display: grid;
 
-  grid-template-columns: 34px 1fr;
+  grid-template-columns:
+    34px 1fr;
 
   column-gap: 12px;
 
   margin-bottom: 18px;
+}
+
+.step:last-child {
+  margin-bottom: 0;
 }
 
 .step-number {
@@ -428,10 +377,10 @@ h1 {
   border-radius: 50%;
 
   background:
-    rgba(250,204,21,0.12);
+    rgba(250, 204, 21, 0.13);
 
   border:
-    1px solid rgba(250,204,21,0.25);
+    1px solid rgba(250, 204, 21, 0.28);
 
   color: #facc15;
 
@@ -444,7 +393,7 @@ h1 {
 
 .step strong {
 
-  color: #f8fafc;
+  color: #ffffff;
 
   font-size: 15px;
 
@@ -464,104 +413,60 @@ h1 {
 
 
 /* =========================================================
-   TRANSPARENCY BOX
-========================================================= */
-
-.expectations {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 6px;
-
-  background:
-    rgba(255,255,255,0.035);
-
-  border:
-    1px solid rgba(255,255,255,0.07);
-
-  border-radius: 12px;
-
-  padding: 14px 16px;
-
-  margin-top: 8px;
-
-  margin-bottom: 25px;
-}
-
-.expectations strong {
-
-  color: #e2e8f0;
-
-  font-size: 14px;
-}
-
-.expectations span {
-
-  color: #94a3b8;
-
-  font-size: 13px;
-
-  line-height: 1.55;
-}
-
-
-/* =========================================================
    SECOND CTA
 ========================================================= */
 
 .final-cta {
-
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .cta-secondary {
 
-  display: inline-block;
-
   border:
     2px solid #facc15;
 
-  color: #facc15;
+  color:
+    #facc15;
+
+  background:
+    transparent;
 
   padding:
-    14px 28px;
+    13px 28px;
 
-  border-radius: 10px;
+  border-radius:
+    10px;
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
-  font-weight: 600;
-
-  font-size: 16px;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+  font-weight:
+    600;
 }
 
 .cta-secondary:hover {
 
-  background: #facc15;
+  background:
+    #facc15;
 
-  color: #020617;
+  color:
+    #081a2f;
 
   transform:
     translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(250, 204, 21, 0.18);
 }
 
 .cta-secondary:active {
-
-  transform:
-    translateY(0);
+  transform: translateY(0);
 }
 
 
 /* =========================================================
    EXAMPLE SURVEY PREVIEW
-   SAME DESIGN AS SITE 2
 ========================================================= */
 
 .mockup {
@@ -570,9 +475,11 @@ h1 {
 
   max-width: 440px;
 
-  background: #0f172a;
+  background:
+    #0c1f35;
 
-  border-radius: 18px;
+  border-radius:
+    18px;
 
   padding:
     clamp(18px, 2.5vw, 22px);
@@ -622,7 +529,8 @@ h1 {
   padding:
     5px 8px;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 }
 
 
@@ -645,7 +553,7 @@ h1 {
 
 .stat {
 
-  color: #64748b;
+  color: #94a3b8;
 
   font-size: 11px;
 
@@ -659,28 +567,36 @@ h1 {
 
 .survey {
 
-  background: #020617;
+  background:
+    #061423;
 
   padding:
     12px;
 
-  border-radius: 8px;
+  border-radius:
+    8px;
 
-  margin-top: 7px;
+  margin-top:
+    7px;
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
     1fr auto;
 
-  gap: 12px;
+  gap:
+    12px;
 
-  align-items: center;
+  align-items:
+    center;
 
-  font-size: 14px;
+  font-size:
+    14px;
 
   border:
-    1px solid rgba(255,255,255,0.025);
+    1px solid
+    rgba(255,255,255,0.025);
 
   transition:
     transform 0.2s ease,
@@ -698,38 +614,50 @@ h1 {
 
 .survey-name {
 
-  color: #e2e8f0;
+  color:
+    #e2e8f0;
 
-  font-weight: 500;
+  font-weight:
+    500;
 }
 
 .survey-details {
 
-  display: flex;
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  align-items: flex-end;
+  align-items:
+    flex-end;
 
-  gap: 2px;
+  gap:
+    2px;
 
-  white-space: nowrap;
+  white-space:
+    nowrap;
 }
 
 .reward {
 
-  color: #facc15;
+  color:
+    #facc15;
 
-  font-weight: 600;
+  font-weight:
+    600;
 
-  font-size: 13px;
+  font-size:
+    13px;
 }
 
 .time {
 
-  color: #64748b;
+  color:
+    #94a3b8;
 
-  font-size: 11px;
+  font-size:
+    11px;
 }
 
 
@@ -737,13 +665,17 @@ h1 {
 
 .mock-note {
 
-  color: #64748b;
+  color:
+    #94a3b8;
 
-  font-size: 11px;
+  font-size:
+    11px;
 
-  line-height: 1.5;
+  line-height:
+    1.5;
 
-  margin-top: 13px;
+  margin-top:
+    13px;
 }
 
 
@@ -753,21 +685,23 @@ h1 {
 
 .trust-footer {
 
-  width: 100%;
+  text-align:
+    center;
 
-  text-align: center;
+  font-size:
+    13px;
 
-  font-size: 13px;
-
-  color: #64748b;
+  color:
+    #94a3b8;
 
   padding:
     45px
     20px
-    65px;
+    70px;
 
   border-top:
-    1px solid rgba(255,255,255,0.03);
+    1px solid
+    rgba(255,255,255,0.04);
 }
 
 
@@ -779,20 +713,23 @@ h1 {
 
   .main {
 
-    flex-direction: column;
+    grid-template-columns:
+      1fr;
 
-    align-items: center;
+    max-width:
+      650px;
+
+    margin-inline:
+      auto;
   }
 
-  .info,
   .mockup {
 
-    max-width: 600px;
-  }
+    max-width:
+      520px;
 
-  .mockup {
-
-    width: 100%;
+    margin-inline:
+      auto;
   }
 
 }
@@ -812,37 +749,27 @@ h1 {
 
   .hero {
 
-    padding-top: 50px;
-
-    padding-bottom: 45px;
+    padding-top:
+      50px;
   }
 
   h1 {
 
-    letter-spacing: -0.8px;
+    letter-spacing:
+      -0.8px;
   }
 
   .cta-button,
   .cta-secondary {
 
-    width: 100%;
-
-    text-align: center;
-  }
-
-  .story {
-
-    margin-bottom: 40px;
+    width:
+      100%;
   }
 
   .main {
 
-    gap: 35px;
-
-    padding:
-      15px
-      16px
-      65px;
+    padding-bottom:
+      70px;
   }
 
   .mock-top {
@@ -853,17 +780,20 @@ h1 {
 
   .survey {
 
-    padding: 11px;
+    padding:
+      11px;
   }
 
-  .reward-options {
+  .trust-row {
 
-    gap: 7px;
+    gap:
+      7px;
   }
 
-  .reward-item {
+  .trust-item {
 
-    font-size: 11px;
+    font-size:
+      11px;
 
     padding:
       7px 10px;
@@ -873,23 +803,30 @@ h1 {
 
 
 /* =========================================================
-   VERY NARROW WINDOWS
+   VERY SMALL
 ========================================================= */
 
 @media (max-width: 380px) {
 
-  .hero {
+  .container {
 
-    padding-left: 13px;
-
-    padding-right: 13px;
+    width:
+      calc(100% - 22px);
   }
 
-  .main {
+  .hero {
 
-    padding-left: 13px;
+    padding-top:
+      40px;
+  }
 
-    padding-right: 13px;
+  .trust-item {
+
+    width:
+      100%;
+
+    text-align:
+      center;
   }
 
   .mock-top {
@@ -900,22 +837,23 @@ h1 {
 
   .survey {
 
-    grid-template-columns:
-      1fr auto;
+    font-size:
+      13px;
 
-    gap: 7px;
-
-    font-size: 13px;
+    gap:
+      7px;
   }
 
   .reward {
 
-    font-size: 12px;
+    font-size:
+      12px;
   }
 
   .time {
 
-    font-size: 10px;
+    font-size:
+      10px;
   }
 
 }
@@ -928,7 +866,6 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
 
   html {
-
     scroll-behavior: auto;
   }
 
@@ -949,15 +886,17 @@ h1 {
   .fade,
   .hero .fade-item {
 
-    opacity: 1;
+    opacity:
+      1;
 
-    transform: none;
+    transform:
+      none;
   }
 
   .cta-button {
 
-    animation: none;
-    opacity: 1;
+    animation:
+      none;
   }
 
 }
@@ -965,43 +904,39 @@ h1 {
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =====================================================
+<!-- =======================================================
      HERO
-===================================================== -->
+======================================================= -->
 
 <section class="hero">
 
   <div class="container">
 
     <div class="badge fade-item delay-1">
-      ⭐ Trusted survey platform
+      ⭐ Trusted by thousands
     </div>
-
 
     <h1>
 
       <span class="fade-item delay-2">
-        Get Paid For Your
+        Top Rated
       </span>
 
       <span class="fade-item delay-3 highlight">
-        Opinion
+        Survey Site
       </span>
 
     </h1>
 
-
     <div class="subtext fade-item delay-4">
 
-      Share your opinions through simple surveys
-      and earn rewards in your spare time.
+      Get paid for your opinion with one of the most trusted survey
+      platforms online.
 
     </div>
-
 
     <a
       class="cta-button fade-item delay-5"
@@ -1009,9 +944,8 @@ h1 {
       target="_blank"
       rel="noopener noreferrer"
     >
-      👉 Try It Free
+      👉 Join Free
     </a>
-
 
     <div class="cta-note fade-item delay-5">
 
@@ -1019,23 +953,18 @@ h1 {
 
     </div>
 
+    <div class="trust-row fade-item delay-5">
 
-    <div class="reward-options fade-item delay-5">
-
-      <div class="reward-item">
-        💸 Cash rewards
+      <div class="trust-item">
+        ⭐ 4.5+ Rating
       </div>
 
-      <div class="reward-item">
-        🎁 Gift cards
+      <div class="trust-item">
+        💳 100+ Cashouts
       </div>
 
-      <div class="reward-item">
-        💳 Multiple reward options
-      </div>
-
-      <div class="reward-item">
-        🌍 Available worldwide
+      <div class="trust-item">
+        🌍 Worldwide
       </div>
 
     </div>
@@ -1045,40 +974,23 @@ h1 {
 </section>
 
 
-<!-- =====================================================
-     STORY
-===================================================== -->
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
-<section class="story fade">
-
-  A simple way to earn a little extra in your spare time.
-  Answer questions about everyday topics, complete available
-  surveys, and build up rewards as you go.
-
-</section>
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="main fade">
+<main class="main container fade">
 
 
   <!-- LEFT COLUMN -->
 
   <div class="info">
 
-
     <h2>
-      What you do
+      Why people trust it
     </h2>
 
     <p>
-
-      Answer simple questions about shopping, products,
-      entertainment, lifestyle and everyday life.
-
+      Reliable surveys, consistent payouts, and thousands of active users.
     </p>
 
 
@@ -1089,7 +1001,6 @@ h1 {
       <div class="steps-title">
         How it works
       </div>
-
 
       <div class="step">
 
@@ -1102,7 +1013,7 @@ h1 {
         </strong>
 
         <span>
-          Create a free account and complete your profile.
+          Create your free account and get started.
         </span>
 
       </div>
@@ -1115,11 +1026,11 @@ h1 {
         </div>
 
         <strong>
-          Answer questions
+          Complete surveys
         </strong>
 
         <span>
-          Pick from surveys that are available to you.
+          Choose available surveys and share your opinion.
         </span>
 
       </div>
@@ -1136,7 +1047,7 @@ h1 {
         </strong>
 
         <span>
-          Complete surveys and redeem your available rewards.
+          Complete surveys and redeem your rewards.
         </span>
 
       </div>
@@ -1144,39 +1055,23 @@ h1 {
     </div>
 
 
-    <!-- WHAT YOU GET -->
-
     <h2>
-      What you get
+      What you earn
     </h2>
 
     <p>
-
-      Rewards can include cash and gift cards,
-      depending on the options available to you.
-
+      Cash, gift cards, and rewards for sharing your opinion.
     </p>
 
 
-    <!-- TRANSPARENCY -->
+    <h2>
+      Is it legit?
+    </h2>
 
-    <div class="expectations">
+    <p>
+      Yes — used daily by people worldwide looking to earn extra money.
+    </p>
 
-      <strong>
-        One thing to know
-      </strong>
-
-      <span>
-
-        Survey availability and rewards vary by person.
-        Some surveys may not be available to every user.
-
-      </span>
-
-    </div>
-
-
-    <!-- SECOND CTA -->
 
     <div class="final-cta">
 
@@ -1186,7 +1081,7 @@ h1 {
         target="_blank"
         rel="noopener noreferrer"
       >
-        See How It Works
+        Get Started Free
       </a>
 
     </div>
@@ -1196,11 +1091,9 @@ h1 {
 
   <!-- =================================================
        EXAMPLE SURVEY PREVIEW
-       SAME DESIGN AS SITE 2
   ================================================= -->
 
   <div class="mockup">
-
 
     <div class="mock-header">
 
@@ -1324,20 +1217,20 @@ h1 {
 </main>
 
 
-<!-- =====================================================
+<!-- =======================================================
      FOOTER
-===================================================== -->
+======================================================= -->
 
 <footer class="trust-footer fade">
 
-  Free signup • Survey availability varies • Rewards available
+  Free signup • Works worldwide • No payment required
 
 </footer>
 
 
-<!-- =====================================================
+<!-- =======================================================
      SCROLL FADE SCRIPT
-===================================================== -->
+======================================================= -->
 
 <script>
 
@@ -1345,7 +1238,8 @@ const faders =
   document.querySelectorAll('.fade');
 
 const appearOptions = {
-  threshold: 0.12
+  threshold: 0.15,
+  rootMargin: "0px 0px -40px 0px"
 };
 
 const appearOnScroll =
@@ -1376,7 +1270,6 @@ faders.forEach(fader => {
 });
 
 </script>
-
 
 </body>
 </html>
