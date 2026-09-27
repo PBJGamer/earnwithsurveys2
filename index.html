@@ -12,6 +12,7 @@
 >
 
 <style>
+
 /* =========================================================
    GLOBAL
 ========================================================= */
@@ -27,7 +28,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #0f2a44, #081a2f);
+  background: #020617;
   color: white;
   overflow-x: hidden;
 }
@@ -41,16 +42,17 @@ a {
   margin-inline: auto;
 }
 
+
 /* =========================================================
-   FADE ANIMATION
+   SCROLL FADE
 ========================================================= */
 
 .fade {
   opacity: 0;
   transform: translateY(20px);
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .fade.show {
@@ -58,12 +60,15 @@ a {
   transform: translateY(0);
 }
 
-/* HERO STAGGER */
+
+/* =========================================================
+   HERO ANIMATION
+========================================================= */
 
 .hero .fade-item {
   opacity: 0;
   transform: translateY(12px);
-  animation: heroFade 0.65s ease forwards;
+  animation: heroFade 0.6s ease forwards;
 }
 
 .hero .delay-1 {
@@ -71,11 +76,11 @@ a {
 }
 
 .hero .delay-2 {
-  animation-delay: 0.35s;
+  animation-delay: 0.3s;
 }
 
 .hero .delay-3 {
-  animation-delay: 0.55s;
+  animation-delay: 0.5s;
 }
 
 .hero .delay-4 {
@@ -83,41 +88,61 @@ a {
 }
 
 .hero .delay-5 {
-  animation-delay: 0.95s;
+  animation-delay: 1s;
 }
 
 @keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   text-align: center;
-  padding: clamp(55px, 8vw, 90px) 0 clamp(45px, 6vw, 70px);
+
+  padding:
+    clamp(55px, 8vw, 85px)
+    clamp(16px, 4vw, 30px)
+    clamp(45px, 6vw, 65px);
 }
 
 .badge {
   display: inline-block;
-  background: rgba(250, 204, 21, 0.15);
+
+  background: rgba(250, 204, 21, 0.1);
   color: #facc15;
-  padding: 6px 14px;
+
+  padding: 7px 15px;
   border-radius: 999px;
-  font-size: 13px;
+
+  font-size: clamp(12px, 1.5vw, 13px);
+
   margin-bottom: 20px;
 }
 
 h1 {
-  font-size: clamp(36px, 5.5vw, 52px);
+  font-size: clamp(36px, 5.2vw, 56px);
   line-height: 1.08;
+
   margin: 0 auto;
+
   max-width: 850px;
-  letter-spacing: -1.3px;
+
+  letter-spacing: -1.5px;
 }
 
 .highlight {
@@ -126,207 +151,652 @@ h1 {
 
 .subtext {
   color: #cbd5f5;
+
   font-size: clamp(16px, 2vw, 18px);
+
   line-height: 1.6;
-  margin: 18px auto 30px;
-  max-width: 520px;
+
+  margin: 20px auto 30px;
+
+  max-width: 570px;
 }
+
 
 /* =========================================================
-   BUTTONS
+   PRIMARY CTA
 ========================================================= */
 
-.cta-button,
-.cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
+.cta-button {
+  display: inline-block;
+
+  background: linear-gradient(
+    135deg,
+    #f97316,
+    #facc15
+  );
+
+  color: #020617;
+
+  padding: 16px 34px;
+
+  border-radius: 12px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  font-size: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(249,115,22,0.35);
+
   transition:
     transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    color 0.25s ease;
-}
+    box-shadow 0.25s ease;
 
-.cta-button {
-  background: linear-gradient(135deg, #f97316, #facc15);
-  color: black;
-  padding: 16px 34px;
-  border-radius: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 18px;
-  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+  opacity: 0;
+
+  animation:
+    heroFade 0.6s ease forwards,
+    pulse 2.5s 1.6s infinite;
+
+  animation-delay: 1s, 1.6s;
 }
 
 .cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 35px rgba(249, 115, 22, 0.5);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 35px rgba(249,115,22,0.45);
 }
 
 .cta-button:active {
   transform: translateY(0);
 }
 
-.cta-note {
-  font-size: 13px;
-  color: #94a3b8;
-  margin-top: 10px;
+@keyframes pulse {
+
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(249,115,22,0.35);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 12px rgba(249,115,22,0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(249,115,22,0);
+  }
+
 }
 
+
 /* =========================================================
-   TRUST STRIP
+   CTA NOTE
 ========================================================= */
 
-.trust-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 25px;
+.cta-note {
+  font-size: 13px;
+
+  color: #64748b;
+
+  margin-top: 11px;
+
+  opacity: 0;
+
+  animation:
+    heroFade 0.6s ease forwards;
+
+  animation-delay: 1.2s;
 }
 
-.trust-item {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  color: #e2e8f0;
-}
 
 /* =========================================================
-   MAIN
+   REWARD OPTIONS
+========================================================= */
+
+.reward-options {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 22px;
+
+  opacity: 0;
+
+  animation:
+    heroFade 0.6s ease forwards;
+
+  animation-delay: 1.4s;
+}
+
+.reward-item {
+
+  background:
+    rgba(255,255,255,0.045);
+
+  border:
+    1px solid rgba(255,255,255,0.07);
+
+  color: #cbd5f5;
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story {
+
+  width: calc(100% - 32px);
+
+  max-width: 650px;
+
+  margin: 5px auto 55px;
+
+  text-align: center;
+
+  color: #cbd5f5;
+
+  line-height: 1.7;
+
+  font-size: clamp(15px, 1.8vw, 16px);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
 ========================================================= */
 
 .main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  align-items: start;
-  gap: clamp(35px, 7vw, 70px);
-  padding: 30px 0 100px;
+
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  gap: clamp(35px, 6vw, 70px);
+
+  padding:
+    20px
+    clamp(16px, 4vw, 30px)
+    90px;
 }
 
+
+/* =========================================================
+   INFO COLUMN
+========================================================= */
+
 .info {
-  min-width: 0;
+
+  width: 100%;
+
+  max-width: 450px;
 }
 
 .info h2 {
-  margin: 0 0 8px;
-  font-size: clamp(20px, 2.5vw, 24px);
+
+  font-size:
+    clamp(21px, 2.5vw, 24px);
+
+  margin:
+    0 0 9px;
 }
 
 .info p {
-  color: #cbd5f5;
+
+  color: #94a3b8;
+
+  font-size:
+    clamp(15px, 1.8vw, 16px);
+
   line-height: 1.65;
-  margin: 0 0 24px;
-  font-size: 15px;
+
+  margin:
+    0 0 25px;
 }
+
 
 /* =========================================================
-   MOCKUP
+   HOW IT WORKS
 ========================================================= */
 
-.mockup {
-  width: 100%;
-  background: #0c1f35;
-  border-radius: 18px;
-  padding: clamp(15px, 3vw, 20px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+.steps {
+
+  margin:
+    30px 0 30px;
 }
 
-.mock-top {
+.steps-title {
+
+  font-size: 20px;
+
+  margin-bottom: 18px;
+
+  color: #f8fafc;
+
+  font-weight: 600;
+}
+
+.step {
+
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 10px;
+
+  grid-template-columns: 34px 1fr;
+
+  column-gap: 12px;
+
+  margin-bottom: 18px;
 }
 
-.stat {
-  min-width: 0;
-  background: #061423;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 14px;
-}
+.step-number {
 
-.survey {
-  background: #061423;
-  padding: 11px 12px;
-  border-radius: 6px;
-  margin-top: 8px;
+  width: 32px;
+  height: 32px;
+
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(250,204,21,0.12);
+
+  border:
+    1px solid rgba(250,204,21,0.25);
+
+  color: #facc15;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  grid-row: span 2;
+}
+
+.step strong {
+
+  color: #f8fafc;
+
+  font-size: 15px;
+
+  line-height: 1.4;
+}
+
+.step span {
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   TRANSPARENCY BOX
+========================================================= */
+
+.expectations {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  background:
+    rgba(255,255,255,0.035);
+
+  border:
+    1px solid rgba(255,255,255,0.07);
+
+  border-radius: 12px;
+
+  padding: 14px 16px;
+
+  margin-top: 8px;
+
+  margin-bottom: 25px;
+}
+
+.expectations strong {
+
+  color: #e2e8f0;
+
   font-size: 14px;
 }
 
-.survey span:last-child {
+.expectations span {
+
   color: #94a3b8;
-  white-space: nowrap;
+
+  font-size: 13px;
+
+  line-height: 1.55;
 }
+
 
 /* =========================================================
    SECOND CTA
 ========================================================= */
 
 .final-cta {
-  margin-top: 30px;
+
+  margin-top: 28px;
 }
 
 .cta-secondary {
-  border: 2px solid #facc15;
+
+  display: inline-block;
+
+  border:
+    2px solid #facc15;
+
   color: #facc15;
-  background: transparent;
-  padding: 13px 28px;
+
+  padding:
+    14px 28px;
+
   border-radius: 10px;
+
   text-decoration: none;
+
   font-weight: 600;
+
+  font-size: 16px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .cta-secondary:hover {
+
   background: #facc15;
-  color: black;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.18);
+
+  color: #020617;
+
+  transform:
+    translateY(-2px);
 }
 
 .cta-secondary:active {
-  transform: translateY(0);
+
+  transform:
+    translateY(0);
 }
+
+
+/* =========================================================
+   EXAMPLE SURVEY PREVIEW
+   SAME DESIGN AS SITE 2
+========================================================= */
+
+.mockup {
+
+  width: 100%;
+
+  max-width: 440px;
+
+  background: #0f172a;
+
+  border-radius: 18px;
+
+  padding:
+    clamp(18px, 2.5vw, 22px);
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,0.2);
+}
+
+
+/* MOCKUP HEADER */
+
+.mock-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.mock-label {
+
+  font-size: 15px;
+
+  color: #f8fafc;
+
+  font-weight: 600;
+}
+
+.mock-badge {
+
+  font-size: 11px;
+
+  color: #facc15;
+
+  background:
+    rgba(250,204,21,0.08);
+
+  border:
+    1px solid rgba(250,204,21,0.15);
+
+  padding:
+    5px 8px;
+
+  border-radius: 999px;
+}
+
+
+/* COLUMN HEADERS */
+
+.mock-top {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 115px;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+
+  padding:
+    0 12px;
+}
+
+.stat {
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* SURVEY ROW */
+
+.survey {
+
+  background: #020617;
+
+  padding:
+    12px;
+
+  border-radius: 8px;
+
+  margin-top: 7px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap: 12px;
+
+  align-items: center;
+
+  font-size: 14px;
+
+  border:
+    1px solid rgba(255,255,255,0.025);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.survey:hover {
+
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(250,204,21,0.12);
+}
+
+.survey-name {
+
+  color: #e2e8f0;
+
+  font-weight: 500;
+}
+
+.survey-details {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 2px;
+
+  white-space: nowrap;
+}
+
+.reward {
+
+  color: #facc15;
+
+  font-weight: 600;
+
+  font-size: 13px;
+}
+
+.time {
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+/* MOCKUP DISCLAIMER */
+
+.mock-note {
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  margin-top: 13px;
+}
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 .trust-footer {
+
+  width: 100%;
+
   text-align: center;
+
   font-size: 13px;
-  color: #94a3b8;
-  padding: 45px 20px 70px;
+
+  color: #64748b;
+
+  padding:
+    45px
+    20px
+    65px;
+
+  border-top:
+    1px solid rgba(255,255,255,0.03);
 }
 
+
 /* =========================================================
-   TABLET / SMALL LAPTOP
+   TABLET
 ========================================================= */
 
 @media (max-width: 850px) {
 
   .main {
-    grid-template-columns: 1fr;
-    max-width: 650px;
-    margin-inline: auto;
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .info,
+  .mockup {
+
+    max-width: 600px;
   }
 
   .mockup {
-    max-width: 520px;
-    margin-inline: auto;
+
+    width: 100%;
   }
+
 }
+
 
 /* =========================================================
    MOBILE
@@ -335,54 +805,121 @@ h1 {
 @media (max-width: 600px) {
 
   .container {
-    width: min(100% - 28px, 1100px);
+
+    width:
+      min(100% - 28px, 1100px);
   }
 
   .hero {
+
     padding-top: 50px;
+
+    padding-bottom: 45px;
   }
 
   h1 {
+
     letter-spacing: -0.8px;
   }
 
   .cta-button,
   .cta-secondary {
+
     width: 100%;
+
+    text-align: center;
+  }
+
+  .story {
+
+    margin-bottom: 40px;
   }
 
   .main {
-    padding-bottom: 70px;
+
+    gap: 35px;
+
+    padding:
+      15px
+      16px
+      65px;
   }
 
   .mock-top {
-    grid-template-columns: 1fr;
+
+    grid-template-columns:
+      1fr 100px;
   }
 
   .survey {
-    font-size: 13px;
+
+    padding: 11px;
   }
+
+  .reward-options {
+
+    gap: 7px;
+  }
+
+  .reward-item {
+
+    font-size: 11px;
+
+    padding:
+      7px 10px;
+  }
+
 }
+
 
 /* =========================================================
-   VERY SMALL
+   VERY NARROW WINDOWS
 ========================================================= */
 
-@media (max-width: 360px) {
-
-  .container {
-    width: calc(100% - 22px);
-  }
+@media (max-width: 380px) {
 
   .hero {
-    padding-top: 40px;
+
+    padding-left: 13px;
+
+    padding-right: 13px;
   }
 
-  .trust-item {
-    width: 100%;
-    text-align: center;
+  .main {
+
+    padding-left: 13px;
+
+    padding-right: 13px;
   }
+
+  .mock-top {
+
+    grid-template-columns:
+      1fr 90px;
+  }
+
+  .survey {
+
+    grid-template-columns:
+      1fr auto;
+
+    gap: 7px;
+
+    font-size: 13px;
+  }
+
+  .reward {
+
+    font-size: 12px;
+  }
+
+  .time {
+
+    font-size: 10px;
+  }
+
 }
+
 
 /* =========================================================
    REDUCED MOTION
@@ -391,52 +928,80 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
 
   html {
+
     scroll-behavior: auto;
   }
 
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
   }
 
   .fade,
   .hero .fade-item {
+
     opacity: 1;
+
     transform: none;
   }
+
+  .cta-button {
+
+    animation: none;
+    opacity: 1;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =======================================================
+
+<!-- =====================================================
      HERO
-======================================================= -->
+===================================================== -->
 
 <section class="hero">
+
   <div class="container">
 
     <div class="badge fade-item delay-1">
-      ⭐ Trusted by thousands
+      ⭐ Trusted survey platform
     </div>
+
 
     <h1>
+
       <span class="fade-item delay-2">
-        Top Rated
+        Get Paid For Your
       </span>
+
       <span class="fade-item delay-3 highlight">
-        Survey Site
+        Opinion
       </span>
+
     </h1>
 
+
     <div class="subtext fade-item delay-4">
-      Get paid for your opinion with one of the most trusted survey
-      platforms online.
+
+      Share your opinions through simple surveys
+      and earn rewards in your spare time.
+
     </div>
+
 
     <a
       class="cta-button fade-item delay-5"
@@ -444,54 +1009,174 @@ h1 {
       target="_blank"
       rel="noopener noreferrer"
     >
-      👉 Join Free
+      👉 Try It Free
     </a>
 
+
     <div class="cta-note fade-item delay-5">
+
       Takes less than 1 minute to get started
+
     </div>
 
-    <div class="trust-row fade-item delay-5">
 
-      <div class="trust-item">
-        ⭐ 4.5+ Rating
+    <div class="reward-options fade-item delay-5">
+
+      <div class="reward-item">
+        💸 Cash rewards
       </div>
 
-      <div class="trust-item">
-        💳 100+ Cashouts
+      <div class="reward-item">
+        🎁 Gift cards
       </div>
 
-      <div class="trust-item">
-        🌍 Worldwide
+      <div class="reward-item">
+        💳 Multiple reward options
+      </div>
+
+      <div class="reward-item">
+        🌍 Available worldwide
       </div>
 
     </div>
 
   </div>
+
 </section>
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
 
-<main class="main container fade">
+<!-- =====================================================
+     STORY
+===================================================== -->
+
+<section class="story fade">
+
+  A simple way to earn a little extra in your spare time.
+  Answer questions about everyday topics, complete available
+  surveys, and build up rewards as you go.
+
+</section>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main fade">
+
+
+  <!-- LEFT COLUMN -->
 
   <div class="info">
 
-    <h2>Why people trust it</h2>
+
+    <h2>
+      What you do
+    </h2>
+
     <p>
-      Reliable surveys, consistent payouts, and thousands of active users.
+
+      Answer simple questions about shopping, products,
+      entertainment, lifestyle and everyday life.
+
     </p>
 
-    <h2>What you earn</h2>
+
+    <!-- HOW IT WORKS -->
+
+    <div class="steps">
+
+      <div class="steps-title">
+        How it works
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          1
+        </div>
+
+        <strong>
+          Sign up
+        </strong>
+
+        <span>
+          Create a free account and complete your profile.
+        </span>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          2
+        </div>
+
+        <strong>
+          Answer questions
+        </strong>
+
+        <span>
+          Pick from surveys that are available to you.
+        </span>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          3
+        </div>
+
+        <strong>
+          Earn rewards
+        </strong>
+
+        <span>
+          Complete surveys and redeem your available rewards.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- WHAT YOU GET -->
+
+    <h2>
+      What you get
+    </h2>
+
     <p>
-      Cash, gift cards, and rewards for sharing your opinion.
+
+      Rewards can include cash and gift cards,
+      depending on the options available to you.
+
     </p>
 
-    <h2>Is it legit?</h2>
-    <p>
-      Yes — used daily by people worldwide looking to earn extra money.
-    </p>
+
+    <!-- TRANSPARENCY -->
+
+    <div class="expectations">
+
+      <strong>
+        One thing to know
+      </strong>
+
+      <span>
+
+        Survey availability and rewards vary by person.
+        Some surveys may not be available to every user.
+
+      </span>
+
+    </div>
+
+
+    <!-- SECOND CTA -->
 
     <div class="final-cta">
 
@@ -501,88 +1186,197 @@ h1 {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Get Started Free
+        See How It Works
       </a>
 
     </div>
 
   </div>
 
+
+  <!-- =================================================
+       EXAMPLE SURVEY PREVIEW
+       SAME DESIGN AS SITE 2
+  ================================================= -->
+
   <div class="mockup">
+
+
+    <div class="mock-header">
+
+      <div class="mock-label">
+        Example surveys
+      </div>
+
+      <div class="mock-badge">
+        Sample
+      </div>
+
+    </div>
+
 
     <div class="mock-top">
 
       <div class="stat">
-        12 Surveys
+        Survey
       </div>
 
       <div class="stat">
-        $4.80 Today
+        Reward / time
       </div>
 
     </div>
 
-    <div class="survey">
-      <span>Shopping habits</span>
-      <span>5 min</span>
-    </div>
 
     <div class="survey">
-      <span>App feedback</span>
-      <span>3 min</span>
+
+      <span class="survey-name">
+        Shopping habits
+      </span>
+
+      <span class="survey-details">
+
+        <span class="reward">
+          ~$1.20
+        </span>
+
+        <span class="time">
+          ~5 min
+        </span>
+
+      </span>
+
     </div>
 
+
     <div class="survey">
-      <span>Daily routine</span>
-      <span>4 min</span>
+
+      <span class="survey-name">
+        App feedback
+      </span>
+
+      <span class="survey-details">
+
+        <span class="reward">
+          ~$0.90
+        </span>
+
+        <span class="time">
+          ~3 min
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="survey">
+
+      <span class="survey-name">
+        Daily routine
+      </span>
+
+      <span class="survey-details">
+
+        <span class="reward">
+          ~$1.00
+        </span>
+
+        <span class="time">
+          ~4 min
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="survey">
+
+      <span class="survey-name">
+        Entertainment
+      </span>
+
+      <span class="survey-details">
+
+        <span class="reward">
+          ~$1.50
+        </span>
+
+        <span class="time">
+          ~6 min
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="mock-note">
+
+      Example layout only — actual surveys,
+      availability and rewards vary.
+
     </div>
 
   </div>
 
 </main>
 
-<!-- =======================================================
+
+<!-- =====================================================
      FOOTER
-======================================================= -->
+===================================================== -->
 
 <footer class="trust-footer fade">
-  Free signup • Works worldwide • No payment required
+
+  Free signup • Survey availability varies • Rewards available
+
 </footer>
 
-<script>
-/* =========================================================
-   SCROLL FADE SYSTEM
-========================================================= */
 
-const faders = document.querySelectorAll('.fade');
+<!-- =====================================================
+     SCROLL FADE SCRIPT
+===================================================== -->
+
+<script>
+
+const faders =
+  document.querySelectorAll('.fade');
 
 const appearOptions = {
-  threshold: 0.15,
-  rootMargin: "0px 0px -40px 0px"
+  threshold: 0.12
 };
 
-const appearOnScroll = new IntersectionObserver(
-  function(entries, observer) {
+const appearOnScroll =
+  new IntersectionObserver(
+    function(entries, observer) {
 
-    entries.forEach(entry => {
+      entries.forEach(entry => {
 
-      if (!entry.isIntersecting) {
-        return;
-      }
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
+        entry.target.classList.add('show');
 
-    });
+        observer.unobserve(entry.target);
 
-  },
-  appearOptions
-);
+      });
+
+    },
+    appearOptions
+  );
+
 
 faders.forEach(fader => {
+
   appearOnScroll.observe(fader);
+
 });
+
 </script>
+
 
 </body>
 </html>
